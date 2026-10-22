@@ -107,7 +107,7 @@ mstsc /v:server
 ## C. Open SERVER's shared folders on the OMEN (as drive Z:)
 
 Windows 11 blocks guest access to shares, so log in with the server account from 3b/3c.
-On the OMEN, Command Prompt. Paste ONE box at a time. This asks the server login name - type it, Enter:
+On the OMEN, open a NORMAL Command Prompt: Win+R, type `cmd`, Enter. NOT Administrator - a drive mapped in an Administrator window is invisible to File Explorer ("Z:\ is unavailable"). Paste ONE box at a time. This asks the server login name - type it, Enter:
 ```
 set /p N=Server login name: 
 ```
