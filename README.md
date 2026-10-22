@@ -12,7 +12,9 @@ Is "server" the .107 PC? Run from 192.168.8.111:
 ping -4 server
 ```
 
-## A. On the TARGET PC (the one you connect TO, e.g. 192.168.8.107)
+Confirmed: `SERVER` = 192.168.8.107 (the file-server computer).
+
+## A. On the SERVER computer itself (192.168.8.107) - sit at it in person
 
 Open **Command Prompt as Administrator**, then run the steps below.
 
@@ -44,6 +46,10 @@ powershell Test-NetConnection 192.168.8.107 -Port 3389
 ### 5. Connect
 ```
 mstsc /v:192.168.8.107
+```
+Same thing by name:
+```
+mstsc /v:server
 ```
 
 ## Notes
