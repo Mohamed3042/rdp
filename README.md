@@ -48,6 +48,17 @@ net start TermService
 netstat -an | findstr 3389
 ```
 
+CHECKED: SERVER shows `0.0.0.0:3389 LISTENING` -> server side done.
+
+### 3b. Still on SERVER: get the login name (write it down)
+```
+echo %USERNAME%
+```
+Only if that account has NO password: set one (type it twice, nothing shows while typing). Whoever logs in at the server will need it after this:
+```
+net user "%USERNAME%" *
+```
+
 ## B. On YOUR PC (the one you connect FROM, e.g. 192.168.8.111)
 
 ### 4. Test port (expect `TcpTestSucceeded : True`)
