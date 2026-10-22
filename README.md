@@ -50,14 +50,25 @@ netstat -an | findstr 3389
 
 CHECKED: SERVER shows `0.0.0.0:3389 LISTENING` -> server side done.
 
-### 3b. Still on SERVER: get the login name (write it down)
+### 3b. Still on SERVER: make a separate RDP login (existing account untouched)
+Pick your own login name. Paste `set U=`, type the name right after it (no spaces), press Enter:
 ```
-echo %USERNAME%
+set U=
 ```
-Only if that account has NO password: set one (type it twice, nothing shows while typing). Whoever logs in at the server will need it after this:
+Create it. Type a new password twice (nothing shows while typing). Write it down:
 ```
-net user "%USERNAME%" *
+net user %U% * /add
 ```
+Allow Remote Desktop + stop password expiring after 42 days (right-click -> Paste):
+```
+net localgroup "Remote Desktop Users" %U% /add
+wmic useraccount where name="%U%" set PasswordExpires=FALSE
+```
+Optional - full admin over RDP (install software, settings):
+```
+net localgroup Administrators %U% /add
+```
+Login in step 5: `SERVER\` + your name, and the password you set.
 
 ## B. On YOUR PC (the one you connect FROM, e.g. 192.168.8.111)
 
