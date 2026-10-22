@@ -16,7 +16,12 @@ Confirmed: `SERVER` = 192.168.8.107 (the file-server computer).
 
 ## A. On the SERVER computer itself (192.168.8.107) - sit at it in person
 
-Open **Command Prompt as Administrator**, then run the steps below.
+The OMEN PC is 192.168.8.111 (Windows 11 Home). Do NOT run part A on the OMEN PC.
+
+Open **Command Prompt as Administrator**. STOP check first - this must print `SERVER`. If not, wrong PC:
+```
+hostname
+```
 
 ### 1. Check Windows edition (Home = no RDP host)
 ```
