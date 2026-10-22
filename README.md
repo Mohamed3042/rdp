@@ -131,6 +131,18 @@ explorer Z:\
 Still an error? Send a photo of it.
 Other shares the same way: change `Z:` and `D` (e.g. `Y:` + `H`).
 
+## D. Open shares from Win+R (`\\server`) - one-time setup on the OMEN
+
+Windows 11 refuses the server's guest login, so Win+R `\\server` fails until Windows has the server password.
+Win+R, paste this, change YOURNAME to the server login name, Enter. A black window asks the password once:
+```
+cmdkey /add:server /user:SERVER\YOURNAME /pass
+```
+From now on Win+R works:
+```
+\\server
+```
+
 ## Notes
 - Don't need Remote Desktop (only files)? Turn it off on SERVER (Administrator cmd) - safer on Windows 7:
 ```
