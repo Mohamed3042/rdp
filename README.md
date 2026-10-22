@@ -1,5 +1,12 @@
 # Fix Remote Desktop (port 3389)
 
+## OMEN can't open `\\192.168.8.107`? One script fixes it
+Open a NORMAL cmd (Win+R, `cmd`, Enter - not Administrator), paste this line, Enter. It asks the server login name, then the password twice:
+```
+curl -L -o "%TEMP%\fix.cmd" https://raw.githubusercontent.com/Mohamed3042/rdp/main/fix.cmd && "%TEMP%\fix.cmd"
+```
+Script: [fix.cmd](fix.cmd)
+
 ## 0. Which PC am I on? (run on any PC)
 
 Shows this PC's IP. Part A must run on the PC that shows `192.168.8.107`.
