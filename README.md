@@ -138,9 +138,23 @@ Win+R, paste this, change YOURNAME to the server login name, Enter. A black wind
 ```
 cmdkey /add:server /user:SERVER\YOURNAME /pass
 ```
-From now on Win+R works:
+Same for the IP address (other PCs use `\\192.168.8.107`):
+```
+cmdkey /add:192.168.8.107 /user:SERVER\YOURNAME /pass
+```
+From now on Win+R works (backslashes, not //):
 ```
 \\server
+```
+```
+\\192.168.8.107
+```
+
+Why other PCs open it without a password: they run older Windows that still allows guest. The OMEN (newer Windows 11) blocks guest by default.
+OPTION 2 - make the OMEN allow guest like the others (LESS SAFE: no login, no tamper check on file traffic). Administrator cmd, then restart:
+```
+reg add "HKLM\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters" /v AllowInsecureGuestAuth /t REG_DWORD /d 1 /f
+powershell Set-SmbClientConfiguration -RequireSecuritySignature $false -Force
 ```
 
 ## Notes
