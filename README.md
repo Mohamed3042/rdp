@@ -23,7 +23,13 @@ Open **Command Prompt as Administrator**. STOP check first - this must print `SE
 hostname
 ```
 
+No browser on the server? Open this sheet in Notepad:
+```
+notepad "\\server\D\Mail folder\22 - Moamed Ahmed\the test\rdp.txt"
+```
+
 ### 1. Check Windows edition (Home = no RDP host)
+SERVER is Windows 7 (6.1.7601). OK = Professional / Ultimate / Enterprise. NOT OK = Starter / Home Basic / Home Premium.
 ```
 systeminfo | findstr /B /C:"OS Name"
 ```
@@ -58,6 +64,7 @@ mstsc /v:server
 ```
 
 ## Notes
+- SECURITY: Windows 7 RDP has a known remote-takeover hole (BlueKeep). Use RDP inside the office network only. NEVER forward port 3389 on the router.
 - `SourceAddress` in step 4 = the PC you are on. If it says .111, you are NOT on the target.
 - Target account must have a password. Blank password = RDP refuses.
 - Microsoft account: log in with email + Microsoft password, not PIN.
