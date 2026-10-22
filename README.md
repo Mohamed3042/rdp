@@ -29,6 +29,7 @@ notepad "\\server\D\Mail folder\22 - Moamed Ahmed\the test\rdp.txt"
 ```
 
 ### 1. Check Windows edition (Home = no RDP host)
+CHECKED: SERVER = Windows 7 Professional -> RDP OK. Windows 7 cmd: Ctrl+V does NOT paste. Right-click inside the window -> Paste.
 SERVER is Windows 7 (6.1.7601). OK = Professional / Ultimate / Enterprise. NOT OK = Starter / Home Basic / Home Premium.
 ```
 systeminfo | findstr /B /C:"OS Name"
