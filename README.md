@@ -126,6 +126,10 @@ net use * /delete /y
 Other shares the same way: change `Z:` and `D` (e.g. `Y:` + `H`).
 
 ## Notes
+- Don't need Remote Desktop (only files)? Turn it off on SERVER (Administrator cmd) - safer on Windows 7:
+```
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 1 /f
+```
 - SERVER gets its IP from the router (DHCP), so .107 can change. Connect by name (`mstsc /v:server`) to be safe.
 - SECURITY: Windows 7 RDP has a known remote-takeover hole (BlueKeep). Use RDP inside the office network only. NEVER forward port 3389 on the router.
 - `SourceAddress` in step 4 = the PC you are on. If it says .111, you are NOT on the target.
