@@ -104,6 +104,27 @@ Same thing by name:
 mstsc /v:server
 ```
 
+## C. Open SERVER's shared folders on the OMEN (as drive Z:)
+
+Windows 11 blocks guest access to shares, so log in with the server account from 3b/3c.
+On the OMEN, Command Prompt. Paste ONE box at a time. This asks the server login name - type it, Enter:
+```
+set /p N=Server login name: 
+```
+Map the D share as Z: (asks the password, nothing shows while typing):
+```
+net use Z: \\server\D * /user:SERVER\%N% /persistent:yes
+```
+Open it:
+```
+explorer Z:\
+```
+Error 1219 ("multiple connections")? Disconnect old network drives, then run the `net use Z:` line again:
+```
+net use * /delete /y
+```
+Other shares the same way: change `Z:` and `D` (e.g. `Y:` + `H`).
+
 ## Notes
 - SERVER gets its IP from the router (DHCP), so .107 can change. Connect by name (`mstsc /v:server`) to be safe.
 - SECURITY: Windows 7 RDP has a known remote-takeover hole (BlueKeep). Use RDP inside the office network only. NEVER forward port 3389 on the router.
