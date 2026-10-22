@@ -107,22 +107,28 @@ mstsc /v:server
 ## C. Open SERVER's shared folders on the OMEN (as drive Z:)
 
 Windows 11 blocks guest access to shares, so log in with the server account from 3b/3c.
-On the OMEN, open a NORMAL Command Prompt: Win+R, type `cmd`, Enter. NOT Administrator - a drive mapped in an Administrator window is invisible to File Explorer ("Z:\ is unavailable"). Paste ONE box at a time. This asks the server login name - type it, Enter:
+On the OMEN, open a NORMAL Command Prompt: Win+R, type `cmd`, Enter. NOT Administrator - a drive mapped in an Administrator window is invisible to File Explorer ("Z:\ is unavailable"). Paste ONE box at a time.
+First clear old/broken network drives (the bad Z: from the Administrator window):
+```
+net use * /delete /y
+```
+This asks the server login name - type it, Enter:
 ```
 set /p N=Server login name: 
 ```
-Map the D share as Z: (asks the password, nothing shows while typing):
+Save the password in Windows (asks the password, nothing shows while typing). Also makes Z: come back after restart:
 ```
-net use Z: \\server\D * /user:SERVER\%N% /persistent:yes
+cmdkey /add:server /user:SERVER\%N% /pass
+```
+Map the D share as Z:
+```
+net use Z: \\server\D /persistent:yes
 ```
 Open it:
 ```
 explorer Z:\
 ```
-Error 1219 ("multiple connections")? Disconnect old network drives, then run the `net use Z:` line again:
-```
-net use * /delete /y
-```
+Still an error? Send a photo of it.
 Other shares the same way: change `Z:` and `D` (e.g. `Y:` + `H`).
 
 ## Notes
