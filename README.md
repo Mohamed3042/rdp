@@ -1,5 +1,17 @@
 # Fix Remote Desktop (port 3389)
 
+## 0. Which PC am I on? (run on any PC)
+
+Shows this PC's IP. Part A must run on the PC that shows `192.168.8.107`.
+```
+ipconfig | findstr IPv4
+```
+
+Is "server" the .107 PC? Run from 192.168.8.111:
+```
+ping -4 server
+```
+
 ## A. On the TARGET PC (the one you connect TO, e.g. 192.168.8.107)
 
 Open **Command Prompt as Administrator**, then run the steps below.
@@ -35,6 +47,7 @@ mstsc /v:192.168.8.107
 ```
 
 ## Notes
+- `SourceAddress` in step 4 = the PC you are on. If it says .111, you are NOT on the target.
 - Target account must have a password. Blank password = RDP refuses.
 - Microsoft account: log in with email + Microsoft password, not PIN.
 - Other PCs: repeat steps 1-3 on each, change the IP in steps 4-5.
