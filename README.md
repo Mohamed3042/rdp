@@ -51,9 +51,9 @@ netstat -an | findstr 3389
 CHECKED: SERVER shows `0.0.0.0:3389 LISTENING` -> server side done.
 
 ### 3b. Still on SERVER: make a separate RDP login (existing account untouched)
-Pick your own login name. Paste `set U=`, type the name right after it (no spaces), press Enter:
+Paste ONE box at a time. This asks for your new login name (no spaces) - type it, press Enter:
 ```
-set U=
+set /p U=New login name: 
 ```
 Create it. Type a new password twice (nothing shows while typing). Write it down:
 ```
@@ -69,6 +69,24 @@ Optional - full admin over RDP (install software, settings):
 net localgroup Administrators %U% /add
 ```
 Login in step 5: `SERVER\` + your name, and the password you set.
+
+### 3c. FIX: forgot the name, account got created as `%U%`
+Do this in a NEW Command Prompt (Administrator). List accounts - look for `%U%`:
+```
+net user
+```
+`%U%` is there? Rename it. This asks the real name - type it, Enter:
+```
+set /p N=New login name: 
+```
+```
+wmic useraccount where name="%U%" rename %N%
+```
+Check: expect `*Remote Desktop Users` and `Password expires  Never`:
+```
+net user %N%
+```
+`%U%` NOT in the list? Do 3b again.
 
 ## B. On YOUR PC (the one you connect FROM, e.g. 192.168.8.111)
 
